@@ -6,14 +6,17 @@ const cucumber = require('../cucumber');
 
 // Launch options.
 const options = {
-  headless: true,
-  slowMo: 100
+  headless: false,
+  slowmo: 1000
 };
+// const devTools = {
+//   devtools: true
+// };
 
 // Create a global browser for the test session.
 BeforeAll(async () => {
   console.log('before all ...');
-  global.browser = await playwright['firefox'].launch(options);
+  global.browser = await playwright['chromium'].launch(options);
 });
 
 AfterAll(async () => {
@@ -28,7 +31,7 @@ Before(async () => {
   global.page = await global.context.newPage();
 });
 
-// close the page and context after each test.
+//close the page and context after each test.
 After(async () => {
   console.log('after pass...');
   await global.page.close();

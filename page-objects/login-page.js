@@ -1,3 +1,6 @@
+const { expect } = require("chai");
+
+
  locators = {
    "username_input": "#user-name",
    "password_input": "#password",
@@ -27,6 +30,6 @@
     const visible = await page.isVisible(locators.inventory_container);
     return expect(visible).to.equal(true);
   }
-}
+};
 
 module.exports = { LoginPage };
