@@ -32,3 +32,11 @@ Then('I should be able to see the home screen', async function() {
 //   await homePage.clickOnOfficialAppleLink();
 //   await homePage.verifyUserIsOnIphone14Page();
 // });
+
+Given('I am going to zillow Page', async function() {
+  await loginPage.zillowLogin();
+});
+
+Given('I verify web page', async function() {
+  await loginPage.zillowVerify();
+});

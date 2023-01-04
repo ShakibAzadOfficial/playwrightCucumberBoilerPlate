@@ -30,6 +30,16 @@ const { expect } = require("chai");
     const visible = await page.isVisible(locators.inventory_container);
     return expect(visible).to.equal(true);
   }
+
+  async zillowLogin(){
+    return await page.goto(global.ZILLOW_URL);
+  }
+
+  async zillowVerify(){
+    const zillowLocator = await page.locator('aria-label="Zillow Real Estate"').isVisible();
+    expect(zillowLocator).toEqual(true);
+    console.log("The locator is visible")
+  }
 };
 
 module.exports = { LoginPage };
