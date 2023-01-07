@@ -15,6 +15,14 @@ Then('I should be able to see the home screen', async function() {
   await loginPage.verifyAfterLoginPage();
 });
 
+Given('I go to demo Website', async function() {
+  await loginPage.demoTest();
+});
+
+Given('I login to the webPage', async function() {
+  await loginPage.theLoginInPage();
+});
+
 // Given('I am on Google Homepage', async function() {
 //   await homePage.navigateToHomePage();
 //   await homePage.verifyUserIsOnHomePage();

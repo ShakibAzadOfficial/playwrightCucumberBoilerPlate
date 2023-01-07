@@ -1,5 +1,5 @@
 const playwright = require('playwright');
-const { BeforeAll, Before, After, AfterAll , Status } = require('@cucumber/cucumber');
+const { BeforeAll, Before, After, AfterAll , Status, setDefaultTimeout } = require('@cucumber/cucumber');
 const cucumber = require('../cucumber');
 
 // const { World } = require('@cucumber/cucumber')
@@ -12,6 +12,8 @@ const options = {
 // const devTools = {
 //   devtools: true
 // };
+
+setDefaultTimeout(60000);
 
 // Create a global browser for the test session.
 BeforeAll(async () => {

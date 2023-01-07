@@ -5,3 +5,7 @@ Object.assign(global, {
 Object.assign(global, {
   NEW_URL: 'https://www.google.com'
 });
+
+Object.assign(global, {
+  DEMO_TEST: 'https://demo.applitools.com/'
+});
