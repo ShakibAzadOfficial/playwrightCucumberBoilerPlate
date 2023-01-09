@@ -1,4 +1,4 @@
-const { expect } = require("chai");
+const {expect} = require("@playwright/test");
 //import { test, expect } from '@playwright/test';
 locators = {
   "username_input": "#user-name",
@@ -15,7 +15,7 @@ class HomePage{
   }
 
   async verifyUserIsOnHomePage() {
-    return expect(await page.title()).to.equal('Google');
+    return expect(await page.title()).toEqual('Google');
   }
   async  fillSearchBar() {
     const searchBar = await page.getByRole("combobox[name=\"Search\"]");
@@ -44,7 +44,8 @@ class HomePage{
   async verifyUserIsOnIphone14Page() {
     await page.locator('[class="ac-gn-item ac-gn-item-menu ac-gn-iphone"]>a>span').click();
     await page.locator('[class="chapternav-item chapternav-item-iphone-14-pro"]>a').click();
-    await expect(page.url('https://www.apple.com/iphone-14-pro/'));
+    expect(page.url()).toContain('https://www.apple.com/iphone-14-pro/')
+
   }
 
   async dashboard() {
