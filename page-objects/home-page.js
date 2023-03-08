@@ -34,25 +34,25 @@ class HomePage{
     expect(locator2.toBeVisible);
   }
   async clickOnOfficialAppleLink() {
-    const getLink = await page.getByRole('link', { name: 'Apple - Official Site Ad· https://www.apple.com/' });
+    const getLink = await page.getByText('Apple - Official Site');
     await getLink.click();
   //  await expect(page.locator((locators.Apple_url)));
-    await page.locator('[class="ac-gn-item ac-gn-item-menu ac-gn-iphone"]>a>span').click();
-    await page.locator('[class="chapternav-item chapternav-item-iphone-14-pro"]>a').click();
+    await page.getByRole('link',{name:'iPhone'}).click();
+    await page.locator('li.chapternav-item.chapternav-item-iphone-14-pro > a > span.chapternav-label').click();
   //  await page.locator('[class="ac-gn-link ac-gn-link-iphone"]').click();
   }
   async verifyUserIsOnIphone14Page() {
-    await page.locator('[class="ac-gn-item ac-gn-item-menu ac-gn-iphone"]>a>span').click();
-    await page.locator('[class="chapternav-item chapternav-item-iphone-14-pro"]>a').click();
+    await page.locator('div.ac-ln-title > a').click();
+    // await page.locator('[class="chapternav-item chapternav-item-iphone-14-pro"]>a').click();
     expect(page.url()).toContain('https://www.apple.com/iphone-14-pro/')
 
   }
 
   async dashboard() {
     await page.waitForTimeout(5000);
-    const dashBoard = await page.locator('[class="element-wrapper compact pt-4"]>h6>>nth=0');
-    const isThere = await dashBoard.isVisible();
-    console.log("Dashboard is visible: " + isThere);
+    const header = await page.locator('[class="element-wrapper compact pt-4"]>h6>>nth=0').innerText();
+    expect(header).toBeVisible()
+    console.log('Header is visible: ' + header );
   }
 
 }
