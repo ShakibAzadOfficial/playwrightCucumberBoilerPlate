@@ -6,10 +6,11 @@ locators = {
 
 class HomePage{
   async dashboard() {
-    await page.waitForTimeout(5000);
-    const header = await page.locator('[class="element-wrapper compact pt-4"]>h6>>nth=0').innerText();
-    expect(header).toBeVisible()
-    console.log('Header is visible: ' + header );
+    const firstHeaderLocator = page.locator('[class="element-wrapper compact pt-4"] > h6').first();
+    await expect(firstHeaderLocator).toBeVisible();
+    const headerText = await firstHeaderLocator.innerText();
+    console.log('Header is visible: ' + headerText);
+    await page.pause();
   }
 }
 module.exports = { HomePage };
