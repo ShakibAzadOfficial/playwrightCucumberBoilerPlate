@@ -23,7 +23,7 @@ const {expect} = require("@playwright/test");
   }
 
   async verifyLoginPageIsDisplayed() {
-   return expect(await page.title()).to.equal('Swag Labs');
+   await expect(page).toHaveTitle('Swag Labs');
   }
 
   async submitLoginForm() {
@@ -36,7 +36,7 @@ const {expect} = require("@playwright/test");
   async verifyAfterLoginPage() {
     await page.waitForSelector(locators.inventory_container);
     const visible = await page.isVisible(locators.inventory_container);
-    return expect(visible).to.equal(true);
+    expect(visible).toBe(true);
   }
 
   async theLoginInPage() {
